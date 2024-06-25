@@ -1,0 +1,53 @@
+<form class="bg-secondary m-2 p-3 text-white">
+    <h4 class="text-center justify-content-center p-3 m-2 bg-dark text-white">Conversor de Divisa</h4>
+  
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">Cantidad ingresada de Origen</label>
+      <input type="text" class="form-control" id="cantidad" placeholder="cantidad" name="cantidad" [(ngModel)]="transaccion.cantidadOrigen">
+    </div>
+  
+    <div class="mb-3">
+      <label for="de" class="form-label">Moneda de Origen</label>
+      <select class="form-select" aria-label="Default select example" name="de" [(ngModel)]="transaccion.monedaOrigen">
+        <option selected>Elegir</option>
+        <option value="NZD">NZD</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+    </div>
+  
+    <div class="mb-3">
+      <label for="a" class="form-label">Moneda de destino</label>
+      <select class="form-select" aria-label="Default select example" name="a" [(ngModel)]="transaccion.monedaDestino">
+        <option selected>Elegir</option>
+        <option value="NZD">NZD</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+    </div>
+  
+    <div class="mb-3">
+      <label for="tasa" class="form-label">Tasa de Conversion</label>
+      <input type="number" class="form-control" id="tasa" placeholder="tasa" name="tasa" [(ngModel)]="transaccion.tasaConversion">
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email del Cliente</label>
+        <input type="email" class="form-control" id="email" placeholder="email" name="email" [(ngModel)]="transaccion.emailCliente">
+    </div>
+
+    <div>
+      <button class="btn btn-warning" type="button" (click)="convertCurrency()">Convertir</button>
+    </div>
+  
+    <div *ngIf="conversionResult">
+      <h3>Resultado de la Conversión</h3>
+      <p>{{ conversionResult | json }}</p>
+    </div>
+
+    <button *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="registrar()">Agregar</button>
+    <button *ngIf="accion=='update'" type="submit" class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+  
+  </form>

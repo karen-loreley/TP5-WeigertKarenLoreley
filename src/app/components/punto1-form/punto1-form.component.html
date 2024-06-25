@@ -1,0 +1,34 @@
+<form class="m-3 p-3">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="producto.nombre">
+    </div>
+    
+    <div class="mb-3">
+      <label for="img" class="form-label">Imagen (URL)</label>
+      <input type="text" class="form-control" id="img" name="img" [(ngModel)]="producto.imagen">
+    </div>
+
+    <div class="mb-3">
+      <label for="des" class="form-label">Descripcion</label>
+      <input type="text" class="form-control" id="des" name="des" [(ngModel)]="producto.descripcion">
+    </div>
+
+    <div class="mb-3">
+      <label for="stock" class="form-label">Stock</label>
+      <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="producto.stock">
+    </div>
+
+    <div class="mb-3">
+      <label for="pre" class="form-label">Precios</label>
+      <input type="number" class="form-control" id="pre" name="pre" [(ngModel)]="producto.precio">
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado" [(ngModel)]="producto.destacado">
+      <label class="form-check-label" for="exampleCheck1">Destacado?</label>
+    </div>
+
+    <button *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="registrar()">Agregar</button>
+    <button *ngIf="accion=='update'" type="submit" class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+  </form>

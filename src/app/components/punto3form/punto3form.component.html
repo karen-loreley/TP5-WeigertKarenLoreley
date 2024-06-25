@@ -1,0 +1,34 @@
+
+<form class="bg-secondary m-2 p-3 text-white">
+  <h4 class="text-center justify-content-center p-3 m-2 bg-dark text-white">Ticket</h4>
+  
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio</label>
+      <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="ticket.precio"> 
+    </div>       
+                                
+    <div class="mb-3">
+        <label class="form-check-label" for="tipoEspectador">Tipo de Espectador: </label>
+        <select class="form-control" [(ngModel)]="ticket.categoriaEspectador" name="tipoEspectador" id="tipoEspectador">
+            
+            <option value="local">Local</option>
+            <option value="extranjero">Extranjero</option>
+        </select>      
+    </div>
+
+    <div class="mb-3">
+      <label for="fecha" class="form-label">Fecha</label>
+      <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="ticket.fechaCompra">
+    </div>
+    
+    <div class="mb-3">
+      <label for="espectador" class="form-label">Espectador</label>
+      <select name="espectador" id="espectador" [(ngModel)]="ticket.espectador._id" class="form-select" required>
+        <option *ngFor="let e of espectadores" [ngValue]="e._id">{{ e.nombre }} {{ e.apellido }}</option>
+      </select>
+    </div>
+    
+    <button *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="registrar()">Agregar</button>
+    <button *ngIf="accion=='update'" type="submit" class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+ 
+  </form>
